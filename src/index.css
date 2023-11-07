@@ -1,5 +1,6 @@
 :root {
   font-family: "Poppins", sans-serif;
+  font-weight: 500;
 }
 
 a {
@@ -14,6 +15,7 @@ body {
 
 button {
   font-family: "Poppins", sans-serif;
+  cursor: pointer;
 }
 
 button:focus,
