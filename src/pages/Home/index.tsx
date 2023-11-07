@@ -1,6 +1,7 @@
 import {useState} from "react";
 
 import {Button} from "../../components/Button/Button";
+import {CustomLink} from "../../components/CustomLink/CustomLink";
 
 
 export const Home = () => {
@@ -33,6 +34,7 @@ export const Home = () => {
             >
                 <span>{isCopied ? 'Copied!' : 'Copy'}</span>
             </Button>
+            <CustomLink link="/">Get started</CustomLink>
         </div>
     )
 }

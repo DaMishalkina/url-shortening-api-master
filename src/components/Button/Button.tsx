@@ -1,7 +1,7 @@
 import classNames from "classnames";
+import {ReactElement} from "react";
 
 import "./Button.scss";
-import {ReactElement} from "react";
 interface Props {
     children: ReactElement,
     onClick?: () => void,

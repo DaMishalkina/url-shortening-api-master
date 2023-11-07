@@ -1,0 +1,23 @@
+@import "src/styles/StyleVariables";
+
+.link {
+  padding: 12px 24px;
+  font-weight: 700;
+  background: $cyan;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover{
+    background: $cyan--hover;
+  }
+  &:focus, &:active {
+    background: $dark-violet;
+  }
+}
+
+.link--large {
+  padding: 20px 40px;
+}
