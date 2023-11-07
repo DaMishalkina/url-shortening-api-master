@@ -1,10 +1,10 @@
 import {Link} from "react-router-dom";
-import {ReactElement, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
-import classNames from "classnames";
 
 import {NavigationList} from "../Navigation/NavigationList";
-// import {useOutsideClick} from "../../hooks/useOutsideClick";
+import {replaceSpaceWithUnderline} from "../../utils/replaceSpaceWithUnderline";
+import {useOutsideClick} from "../../hooks/useOutsideClick";
 
 import {NavType} from "../Navigation/types/types";
 
@@ -14,37 +14,63 @@ import "./Header.scss";
 
 interface Props {
     logoTitle: string,
-    // navMenu?: NavType,
+    navMenu?: NavType,
+    actionsLinks?: string[]
     isLogged?: boolean,
-    cartItemsNumber?: number,
-    cartDropdown?: ReactElement
 }
-
-const NAVIGATION_MENU = ["Features"]
 
 export const Header = ({
                            logoTitle,
-                           // navMenu,
-                           isLogged = false,
-                           cartItemsNumber = 0,
-                           cartDropdown}: Props) => {
-    // const [isNavigationOpened, setIsNavigationOpened] = useState(false);
-    // const {pathname} = useLocation();
-    // const navigationContainerRef = useOutsideClick(() => {
-    //     setIsNavigationOpened(false);
-    // })
-    // useEffect(() => {
-    //
-    //     setIsNavigationOpened(false);
-    // }, [pathname])
+                           navMenu,
+                           actionsLinks,
+                           isLogged = false}: Props) => {
+    const [isNavigationOpened, setIsNavigationOpened] = useState(false);
+    const {pathname} = useLocation();
+    const dropDownContainerRef = useOutsideClick(() => {
+        setIsNavigationOpened(false);
+    })
+    useEffect(() => {
+
+        setIsNavigationOpened(false);
+    }, [pathname])
     return (
         <header className="header">
-            <div className="header__item">
-                <Link className="header__label" to="/">
-                    <Logo title={`${logoTitle} Logo Icon`} />
-                </Link>
-                <NavigationList navMenu={NAVIGATION_MENU} />
-            </div>
+            <Link className="header__link" to="/">
+                <Logo title={`${logoTitle} Logo Icon`} />
+            </Link>
+            {(navMenu || actionsLinks) && (
+                <div className="">
+                    <label
+                        aria-label="Collapse or expand the menu"
+                        className="hamburger-button"
+                    >
+                        <input
+                            aria-haspopup="true"
+                            aria-expanded={isNavigationOpened}
+                            className="hamburger-button__input"
+                            type="checkbox"
+                            onChange={() => setIsNavigationOpened(true)}
+                        />
+                        <span aria-hidden="true" className="hamburger-button__span"></span>
+                        <span aria-hidden="true" className="hamburger-button__span"></span>
+                        <span aria-hidden="true" className="hamburger-button__span"></span>
+                    </label>
+                    <div ref={dropDownContainerRef}>
+                        {navMenu && (
+                            <NavigationList navMenu={navMenu} />
+                        )}
+                        {!isLogged ? actionsLinks && (
+                            <div>
+                                {actionsLinks.map(link => (
+                                    <Link to={replaceSpaceWithUnderline(link)}>{link}</Link>
+                                ))}
+                            </div>
+                        ) : (
+                          <button>Log out</button>
+                        )}
+                    </div>
+                </div>
+            )}
         </header>
     )
 }

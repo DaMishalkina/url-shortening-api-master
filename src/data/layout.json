@@ -1,0 +1,19 @@
+{
+  "title": "Shortly",
+  "header": {
+    "navigationMenu": [
+      "Features",
+      "Pricing",
+      "Resources"
+    ],
+    "actionsLinks": ["Login", "Sign up"]
+  },
+  "footer": {
+    "navigationMenu": {
+      "Features": ["Link Shortening", "Branded Links", "Analytics"],
+      "Resources": ["Blog", "Developers", "Support"],
+      "Company": ["About", "Our Team", "Careers", "Contact"]
+    },
+    "externalLinks": ["Facebook", "Twitter", "Pinterest", "Instagram"]
+  }
+}
