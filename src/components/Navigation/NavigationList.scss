@@ -1,1 +1,17 @@
-@import "../../styles/StyleVariables";
+@import "src/styles/StyleVariables";
+
+.navigation-container {
+  padding-bottom: 38px;
+  border-bottom: 1px solid $grayish-violet;
+  width: 100%;
+}
+
+.navigation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  align-items: center;
+}

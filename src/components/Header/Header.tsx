@@ -11,6 +11,8 @@ import {NavType} from "../Navigation/types/types";
 import Logo from "../../assets/logo.svg?react";
 
 import "./Header.scss";
+import {CustomLink} from "../CustomLink/CustomLink";
+import {Button} from "../Button/Button";
 
 interface Props {
     logoTitle: string,
@@ -39,36 +41,53 @@ export const Header = ({
                 <Logo title={`${logoTitle} Logo Icon`} />
             </Link>
             {(navMenu || actionsLinks) && (
-                <div className="">
+                <div className="header-menu header__menu" ref={dropDownContainerRef}>
                     <label
                         aria-label="Collapse or expand the menu"
-                        className="hamburger-button"
+                        className="hamburger-button header__button"
                     >
                         <input
                             aria-haspopup="true"
                             aria-expanded={isNavigationOpened}
                             className="hamburger-button__input"
                             type="checkbox"
-                            onChange={() => setIsNavigationOpened(true)}
+                            onChange={() => setIsNavigationOpened((prevState) => !prevState)}
                         />
                         <span aria-hidden="true" className="hamburger-button__span"></span>
                         <span aria-hidden="true" className="hamburger-button__span"></span>
                         <span aria-hidden="true" className="hamburger-button__span"></span>
                     </label>
-                    <div ref={dropDownContainerRef}>
-                        {navMenu && (
-                            <NavigationList navMenu={navMenu} />
-                        )}
-                        {!isLogged ? actionsLinks && (
-                            <div>
-                                {actionsLinks.map(link => (
-                                    <Link to={replaceSpaceWithUnderline(link)}>{link}</Link>
-                                ))}
-                            </div>
-                        ) : (
-                          <button>Log out</button>
-                        )}
-                    </div>
+                    {isNavigationOpened && (
+                        <div className="dropdown-container header-menu__dropdown-container">
+                            {navMenu && (
+                                <NavigationList navMenu={navMenu} />
+                            )}
+                            {!isLogged ? actionsLinks && (
+                                <div className="dropdown-container__actions">
+                                    {actionsLinks.map(link => {
+                                        return replaceSpaceWithUnderline(link) === "sign_up" ? (
+                                            <CustomLink
+                                                key={link}
+                                                link={replaceSpaceWithUnderline(link)}
+                                            >
+                                                {link}
+                                            </CustomLink>
+                                        ) : (
+                                            <Link
+                                                className="dropdown-container__link"
+                                                key={link}
+                                                to={replaceSpaceWithUnderline(link)}
+                                            >
+                                                {link}
+                                            </Link>
+                                        )
+                                    })}
+                                </div>
+                            ) : (
+                                <Button>Log out</Button>
+                            )}
+                        </div>
+                    )}
                 </div>
             )}
         </header>

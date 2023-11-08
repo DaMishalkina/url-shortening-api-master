@@ -3,7 +3,7 @@ import {ReactElement} from "react";
 
 import "./Button.scss";
 interface Props {
-    children: ReactElement,
+    children: ReactElement | string,
     onClick?: () => void,
     className?: string,
     isLarge?: boolean,

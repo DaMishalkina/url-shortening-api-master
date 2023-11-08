@@ -1,1 +1,11 @@
 @import "src/styles/StyleVariables";
+
+.navigation-item__link {
+  color: var(--nav-link-color,  #fff);
+  &:hover {
+    --nav-link-color: #{$cyan--hover};
+  }
+  &:focus, &:active {
+    --nav-link-color: #{$cyan};
+  }
+}

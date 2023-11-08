@@ -3,7 +3,7 @@
 .link {
   padding: 12px 24px;
   font-weight: 700;
-  background: $cyan;
+  background: var(--link-bg, $cyan);
   color: #fff;
   text-decoration: none;
   border-radius: 100px;
@@ -12,10 +12,10 @@
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   &:hover{
-    background: $cyan--hover;
+    --link-bg: #{$cyan--hover};
   }
   &:focus, &:active {
-    background: $dark-violet;
+    --link-bg: #{$dark-violet};
   }
 }
 

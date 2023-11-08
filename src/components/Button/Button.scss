@@ -4,7 +4,7 @@
   padding: 14px 30px;
   border: none;
   border-radius: 4px;
-  background: $cyan;
+  background: var(--button-background, $cyan);
   color: #fff;
   width: 100%;
   display: flex;
@@ -13,10 +13,10 @@
   font-weight: 700;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   &:hover {
-    background: $cyan--hover;
+    --button-background: #{$cyan--hover};
   }
   &:focus, &:active {
-    background: $dark-violet;
+    --button-background: #{$dark-violet};
   }
 }
 
