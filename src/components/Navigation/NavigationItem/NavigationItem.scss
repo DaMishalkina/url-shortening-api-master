@@ -9,3 +9,15 @@
     --nav-link-color: #{$cyan};
   }
 }
+
+@media (min-width: $screen--lg) {
+  .navigation-item__link {
+    --nav-link-color: #{$gray};
+    &:hover {
+      --nav-link-color: #{$very-dark-blue};
+    }
+    &:focus, &:active {
+      --nav-link-color: #{$very-dark-violet};
+    }
+  }
+}

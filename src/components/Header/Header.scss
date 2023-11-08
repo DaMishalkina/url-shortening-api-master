@@ -49,11 +49,14 @@
   border-radius: 8px;
   padding: 40px 24px;
   background: var(--dropdown-bg, $dark-violet);
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 38px;
   align-items: center;
   font-weight: 700;
+}
+.dropdown-container--active {
+  display: flex;
 }
 .dropdown-container__actions {
   display: flex;
@@ -75,9 +78,41 @@
 @media (min-width: $screen--lg) {
   .header {
     padding: 48px;
+    justify-content: unset;
+    align-items: flex-end;
+    gap: 48px;
   }
   .hamburger-button {
     display: none;
+  }
+  .header__menu {
+    display: flex;
+    flex: 1;
+  }
+  .dropdown-container {
+    padding: 0;
+    position: static;
+    display: flex;
+    --dropdown-bg: #fff;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 1;
+    max-width: 100%;
+    gap: unset;
+  }
+  .dropdown-container__actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  .dropdown-container__link {
+    --dropdown-link-color: #{$gray};
+    align-self: center;
+    &:hover {
+      --dropdown-link-color: #{$very-dark-blue};
+    }
+    &:focus, &:active {
+      --dropdown-link-color: #{$very-dark-violet};
+    }
   }
 
 }

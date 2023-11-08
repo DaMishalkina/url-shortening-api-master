@@ -15,3 +15,14 @@
   gap: 38px;
   align-items: center;
 }
+
+@media (min-width: $screen--lg) {
+  .navigation-container {
+    border: none;
+    padding: 0;
+  }
+  .navigation-list {
+    flex-direction: row;
+  }
+
+}

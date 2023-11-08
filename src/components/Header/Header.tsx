@@ -13,6 +13,7 @@ import Logo from "../../assets/logo.svg?react";
 import "./Header.scss";
 import {CustomLink} from "../CustomLink/CustomLink";
 import {Button} from "../Button/Button";
+import classNames from "classnames";
 
 interface Props {
     logoTitle: string,
@@ -57,37 +58,39 @@ export const Header = ({
                         <span aria-hidden="true" className="hamburger-button__span"></span>
                         <span aria-hidden="true" className="hamburger-button__span"></span>
                     </label>
-                    {isNavigationOpened && (
-                        <div className="dropdown-container header-menu__dropdown-container">
-                            {navMenu && (
-                                <NavigationList navMenu={navMenu} />
-                            )}
-                            {!isLogged ? actionsLinks && (
-                                <div className="dropdown-container__actions">
-                                    {actionsLinks.map(link => {
-                                        return replaceSpaceWithUnderline(link) === "sign_up" ? (
-                                            <CustomLink
-                                                key={link}
-                                                link={replaceSpaceWithUnderline(link)}
-                                            >
-                                                {link}
-                                            </CustomLink>
-                                        ) : (
-                                            <Link
-                                                className="dropdown-container__link"
-                                                key={link}
-                                                to={replaceSpaceWithUnderline(link)}
-                                            >
-                                                {link}
-                                            </Link>
-                                        )
-                                    })}
-                                </div>
-                            ) : (
-                                <Button>Log out</Button>
-                            )}
-                        </div>
-                    )}
+                    <div
+                        className={classNames(
+                            "dropdown-container header-menu__dropdown-container",
+                            isNavigationOpened && "dropdown-container--active")}
+                    >
+                        {navMenu && (
+                            <NavigationList navMenu={navMenu} />
+                        )}
+                        {!isLogged ? actionsLinks && (
+                            <div className="dropdown-container__actions">
+                                {actionsLinks.map(link => {
+                                    return replaceSpaceWithUnderline(link) === "sign_up" ? (
+                                        <CustomLink
+                                            key={link}
+                                            link={replaceSpaceWithUnderline(link)}
+                                        >
+                                            {link}
+                                        </CustomLink>
+                                    ) : (
+                                        <Link
+                                            className="dropdown-container__link"
+                                            key={link}
+                                            to={replaceSpaceWithUnderline(link)}
+                                        >
+                                            {link}
+                                        </Link>
+                                    )
+                                })}
+                            </div>
+                        ) : (
+                            <Button>Log out</Button>
+                        )}
+                    </div>
                 </div>
             )}
         </header>
