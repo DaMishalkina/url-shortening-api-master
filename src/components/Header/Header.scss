@@ -4,9 +4,10 @@
   padding: 40px 24px 24px 24px;
   display: flex;
   justify-content: space-between;
-  margin: 0 auto;
   max-width: 1200px;
   position: relative;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .header__link svg {
@@ -81,6 +82,7 @@
     justify-content: unset;
     align-items: flex-end;
     gap: 48px;
+    margin: 0 auto;
   }
   .hamburger-button {
     display: none;

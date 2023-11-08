@@ -1,0 +1,12 @@
+@import "src/styles/StyleVariables";
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100dvh;
+}
+
+.logo--white {
+  filter: invert(100%) sepia(89%) saturate(0%) hue-rotate(115deg) brightness(109%) contrast(101%);
+}
