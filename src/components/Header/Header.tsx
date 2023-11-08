@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {ReactElement, useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 
 import {NavigationList} from "../Navigation/NavigationList";
@@ -8,7 +8,7 @@ import {useOutsideClick} from "../../hooks/useOutsideClick";
 
 import {NavType} from "../Navigation/types/types";
 
-import Logo from "../../assets/logo.svg?react";
+// import Logo from "../../assets/logo.svg?react";
 
 import "./Header.scss";
 import {CustomLink} from "../CustomLink/CustomLink";
@@ -16,14 +16,15 @@ import {Button} from "../Button/Button";
 import classNames from "classnames";
 
 interface Props {
-    logoTitle: string,
+    logo?: ReactElement,
+
     navMenu?: NavType,
     actionsLinks?: string[]
     isLogged?: boolean,
 }
 
 export const Header = ({
-                           logoTitle,
+                           logo,
                            navMenu,
                            actionsLinks,
                            isLogged = false}: Props) => {
@@ -39,7 +40,7 @@ export const Header = ({
     return (
         <header className="header">
             <Link className="header__link" to="/">
-                <Logo title={`${logoTitle} Logo Icon`} />
+                {logo}
             </Link>
             {(navMenu || actionsLinks) && (
                 <div className="header-menu header__menu" ref={dropDownContainerRef}>

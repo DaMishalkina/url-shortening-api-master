@@ -14,6 +14,23 @@
       "Resources": ["Blog", "Developers", "Support"],
       "Company": ["About", "Our Team", "Careers", "Contact"]
     },
-    "externalLinks": ["Facebook", "Twitter", "Pinterest", "Instagram"]
+    "externalLinks": [
+      {
+        "title": "Facebook",
+        "link": "https://www.facebook.com/"
+      },
+      {
+        "title": "Twitter",
+        "link": "https://twitter.com/"
+      },
+      {
+        "title": "Pinterest",
+        "link": "https://www.pinterest.com/"
+      },
+      {
+        "title": "Instagram",
+        "link": "https://www.instagram.com/"
+      }
+    ]
   }
 }

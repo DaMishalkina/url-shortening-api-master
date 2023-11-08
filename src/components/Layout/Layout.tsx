@@ -1,8 +1,11 @@
-import {FunctionComponent} from "react";
 import {Outlet} from "react-router-dom";
+import {FunctionComponent} from "react";
 
+import {Footer} from "../Footer/Footer";
 import {Header} from "../Header/Header";
 import layout from "../../data/layout.json";
+
+import Logo from "../../assets/logo.svg?react";
 
 interface Props {
     pageClassName?: string
@@ -12,11 +15,16 @@ export const Layout:FunctionComponent<Props> = ({pageClassName= ""}) => {
     return (
         <div className={pageClassName}>
             <Header
-                logoTitle={layout?.title}
+                logo={<Logo title={`${layout?.title} Logo Icon`} />}
                 navMenu={layout?.header?.navigationMenu}
                 actionsLinks={layout?.header?.actionsLinks}
             />
             <Outlet/>
+            <Footer
+                logo={<Logo title={`${layout?.title} Logo Icon`} />}
+                navigationMenu={layout?.footer?.navigationMenu}
+                socialMedias={layout?.footer?.externalLinks}
+            />
         </div>
     )
 }
