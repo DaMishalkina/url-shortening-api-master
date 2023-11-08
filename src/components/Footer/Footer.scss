@@ -1,13 +1,13 @@
 @import "src/styles/StyleVariables";
 
 .footer {
-  padding: 56px 24px;
   background: $very-dark-violet;
   color: #fff;
   display: flex;
 }
 
 .footer__content {
+  padding: 56px 24px;
   display: flex;
   flex-direction: column;
   max-width: 1200px;
@@ -60,4 +60,30 @@
   &:hover {
     --footer-external-link-color: #{$cyan};
   }
+}
+
+@media (min-width: $screen--lg) {
+  .footer__logo {
+    flex: 2;
+  }
+  .footer__content {
+    padding: 72px 48px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .footer-navigation {
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 3;
+  }
+  .footer-navigation__item {
+    align-items: flex-start;
+
+  }
+  .footer-nav-item__list {
+    align-items: flex-start;
+  }
+
+
 }

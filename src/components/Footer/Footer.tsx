@@ -31,9 +31,9 @@ export const Footer = ({navigationMenu, socialMedias, logo}: Props) => {
     return (
         <footer className="footer">
             <div className="footer__content">
-                <Link to="/" className="footer__logo" >
+                <span className="footer__logo" >
                     {logo}
-                </Link>
+                </span>
                 {navigationMenu && (
                     <section className="footer-navigation footer__navigation">
                         {Object.entries(navigationMenu).map(([navLinksTitle, navLinks]) => (
