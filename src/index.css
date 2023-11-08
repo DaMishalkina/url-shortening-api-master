@@ -27,3 +27,8 @@ button:focus,
 button:focus-visible {
   outline: none;
 }
+
+p {
+  padding: 0;
+  margin: 0;
+}

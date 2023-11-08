@@ -3,6 +3,9 @@ import {useState} from "react";
 import {Button} from "../../components/Button/Button";
 import {CustomLink} from "../../components/CustomLink/CustomLink";
 
+import pageContent from "../../data/pageContent.json";
+import {HeroSection} from "../../components/HeroSection/HeroSection";
+
 
 export const Home = () => {
     const [copyText, setCopyText] = useState("");
@@ -25,16 +28,19 @@ export const Home = () => {
             });
     }
     return (
-        <div>
-            home
-            <input type="text" value={copyText} onChange={(event) => setCopyText(event.target.value)} />
-            <Button
-                onClick={handleCopyClick}
-                isActive={isCopied}
-            >
-                <span>{isCopied ? 'Copied!' : 'Copy'}</span>
-            </Button>
-            <CustomLink link="/">Get started</CustomLink>
-        </div>
+        <main>
+            {/*<Button*/}
+            {/*    onClick={handleCopyClick}*/}
+            {/*    isActive={isCopied}*/}
+            {/*>*/}
+            {/*    <span>{isCopied ? 'Copied!' : 'Copy'}</span>*/}
+            {/*</Button>*/}
+            <HeroSection
+                title={pageContent?.heroSection?.title}
+                text={pageContent?.heroSection?.text}
+                image={pageContent?.heroSection?.image}
+                link={pageContent?.heroSection?.link}
+            />
+        </main>
     )
 }
