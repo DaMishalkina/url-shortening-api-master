@@ -22,7 +22,9 @@ export const Layout:FunctionComponent<Props> = ({pageClassName= ""}) => {
                 navMenu={layout?.header?.navigationMenu}
                 actionsLinks={layout?.header?.actionsLinks}
             />
-            <Outlet/>
+            <main className="layout__content-wrapper">
+                <Outlet />
+            </main>
             <Footer
                 logo={<Logo className="logo--white" title={`${layout?.title} Logo Icon`} />}
                 navigationMenu={layout?.footer?.navigationMenu}

@@ -28,7 +28,7 @@ export const Home = () => {
             });
     }
     return (
-        <main>
+        <section>
             {/*<Button*/}
             {/*    onClick={handleCopyClick}*/}
             {/*    isActive={isCopied}*/}
@@ -41,6 +41,6 @@ export const Home = () => {
                 image={pageContent?.heroSection?.image}
                 link={pageContent?.heroSection?.link}
             />
-        </main>
+        </section>
     )
 }

@@ -10,3 +10,17 @@
 .logo--white {
   filter: invert(100%) sepia(89%) saturate(0%) hue-rotate(115deg) brightness(109%) contrast(101%);
 }
+
+.layout__content-wrapper {
+  padding: 0 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: $screen--lg) {
+  .layout__content-wrapper {
+    padding: 0 48px;
+  }
+}

@@ -25,18 +25,17 @@ const isDesktopImageRight = (position = "right") => {
 
 export const HeroSection = ({title, text, link, image}: Props) => {
     return (
-        <section className="hero-section">
+        <section className={classNames("hero-section", isDesktopImageRight(image?.desktopPosition) && "hero-section--row-reverse")}>
             {image && (
-                <img
-                    className={classNames(
-                        isDesktopImageRight(image.desktopPosition) && "hero-section-image--right",
-                        "hero-section-image",
-                        "hero-section__image")}
-                    src={`src/assets/${image.name}.svg`}
-                    alt={image.name}
-                />
+                <div className="hero-section__image-container">
+                    <img
+                        className="hero-section__image"
+                        src={`src/assets/${image.name}.svg`}
+                        alt={image.name}
+                    />
+                </div>
             )}
-            <div className="hero-section__container">
+            <div className="hero-section__text-container">
                 {title && (
                     <h1 className="hero-section__title">{title}</h1>
                 )}
