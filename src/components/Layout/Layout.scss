@@ -17,10 +17,12 @@
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 @media (min-width: $screen--lg) {
   .layout__content-wrapper {
     padding: 0 48px;
+    overflow-x: unset;
   }
 }
