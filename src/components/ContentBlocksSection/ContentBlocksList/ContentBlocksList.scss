@@ -1,1 +1,39 @@
 @import "src/styles/StyleVariables";
+
+
+.content-block-section__blocks-container {
+  position: relative;
+}
+
+.content-block-section__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 8px;
+  transform: translate(-50%, 0);
+  background: $cyan;
+}
+.content-block-section__list {
+  display: flex;
+  flex-direction: column;
+  gap: 92px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: $screen--lg) {
+  .content-block-section__list {
+    flex-direction: row;
+    gap: 30px;
+  }
+  .content-block-section__line {
+    top: 132px;
+    left: 0;
+    right: 0;
+    bottom: 50%;
+    height: 8px;
+    width: unset;
+    transform: translate(0, 0);
+  }
+}
