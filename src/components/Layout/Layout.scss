@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 100dvh;
+  position: relative;
 }
 
 .logo--white {
@@ -12,15 +13,9 @@
 }
 
 .layout__content-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  box-sizing: border-box;
-  overflow-x: hidden;
 }
 
 @media (min-width: $screen--lg) {
   .layout__content-wrapper {
-    overflow-x: unset;
   }
 }
