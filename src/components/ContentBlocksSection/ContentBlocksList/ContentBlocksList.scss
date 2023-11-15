@@ -13,6 +13,12 @@
   width: 8px;
   transform: translate(-50%, 0);
   background: $cyan;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;;
+}
+
+.blocks-line--visible {
+  opacity: 1;
 }
 .content-block-section__list {
   display: flex;
