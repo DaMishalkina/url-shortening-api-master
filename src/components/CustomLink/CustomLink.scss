@@ -12,6 +12,7 @@
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   flex-shrink: 0;
+  transition: background-color 0.3s ease-in-out;
   &:hover{
     --link-bg: #{$cyan--hover};
   }
