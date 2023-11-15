@@ -36,3 +36,10 @@
 .action-section__image {
   width: 100%;
 }
+
+@media (min-width: $screen--lg) {
+  .action-section__container {
+    padding: 70px 48px 57px 48px;
+    gap: 28px;
+  }
+}
