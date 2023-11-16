@@ -1,1 +1,47 @@
 @import "src/styles/StyleVariables";
+
+.links-container {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  border-radius: 8px;
+}
+
+.long-link-item {
+  padding: 14px 16px;
+  border-bottom: 1px solid $gray;
+  color: $very-dark-blue;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.short-link-item {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: $cyan;
+}
+
+@media (min-width: $screen--lg) {
+  .links-container {
+    padding: 16px 24px 16px 33px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .long-link-item, .short-link-item {
+    padding: 0;
+  }
+  .long-link-item {
+    border: none;
+    max-width: 50%;
+  }
+  .short-link-item {
+    flex-direction: row;
+    align-items: center;
+  }
+}

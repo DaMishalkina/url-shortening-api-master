@@ -37,15 +37,17 @@ export const ShortenedLink = ({
     }
 
     return (
-        <li className="links-item">
-            {longLink}
-            <div className="link-container links-item__container">
+        <li className="links-container">
+            <div className="long-link-item link-item links-container__item">
+                {longLink}
+            </div>
+            <div className="short-link-item link-item links-container__item">
                 {shortLink}
                 <Button
                     onClick={() => handleCopyClick(shortLink)}
                     isActive={isCopied}
                 >
-                    <span className="link-container____link-to-copy">
+                    <span className="short-link-item__link-to-copy">
                         {isCopied ? copyButtonLabelActive : copyButtonLabel}
                     </span>
                 </Button>

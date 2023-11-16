@@ -74,6 +74,7 @@ export const ShortenForm = ({
                    }}
                />
                <Button
+                   isLarge={true}
                    className="shorten-form__button"
                    type="submit"
                >{formButtonLabel}
