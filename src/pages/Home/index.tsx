@@ -1,11 +1,10 @@
 import {useState, useEffect} from "react";
 
-import {Button} from "../../components/Button/Button";
-
 import {ActionSection} from "../../components/ActionSection/ActionSection";
 import {ContentBlockSection} from "../../components/ContentBlocksSection/ContentBlockSection";
 import {HeroSection} from "../../components/HeroSection/HeroSection";
 import pageContent from "../../data/pageContent.json";
+import {ShortenSection} from "../../features/ShortenSection/ShortenSection";
 
 const statisticsCards = pageContent?.statisticsSection?.cards.map(card => {
     return {...card, image: {alt: card.image, src: `src/assets/${card.image}.svg`}};
@@ -23,18 +22,10 @@ const API_URL = "https://api.tinyurl.com/create";
 
 
 export const Home = () => {
-    const [inputLink, setInputLink] = useState("");
-    const [isCopied, setIsCopied] = useState(false);
-    const [tinyUrl, setTinyUrl] = useState("");
     const [usersUrls, setUsersUrl] = useState<{[key: string]: string}>(
         localStorage.getItem("users-urls") ?
         JSON.parse(localStorage.getItem("users-urls") || "") : null
     );
-    async function copyTextToClipboard(text: string) {
-        if ('clipboard' in navigator) {
-            return await navigator.clipboard.writeText(text);
-        }
-    }
     const fetchData = async (url: string) => {
         fetch(API_URL, {
             method: "POST",
@@ -52,7 +43,6 @@ export const Home = () => {
             return response.json()
         })
             .then(data => {
-                setTinyUrl(data.data.tiny_url);
                 setUsersUrl((prevState) => {
                     const newUrls = {
                         ...prevState,
@@ -67,47 +57,11 @@ export const Home = () => {
     useEffect(() => {
         localStorage.setItem("users-urls", JSON.stringify(usersUrls));
     }, [usersUrls])
-    const handleCopyClick = (linkToCopy: string) => {
-        copyTextToClipboard(linkToCopy)
-            .then(() => {
-                setIsCopied(true);
-                setTimeout(() => {
-                    setIsCopied(false);
-                }, 1500);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
+
     return (
         <section>
-            <form onSubmit={() => fetchData(inputLink)}>
-                <input
-                    type="text"
-                    value={inputLink}
-                    onInput={(e) => setInputLink(e.currentTarget.value)}
-                />
-                <Button type="submit">shorten</Button>
-            </form>
-            {usersUrls && (
-                <ul>
-                    {Object.entries(usersUrls).map(([lognUrl, shortUrl]) => (
-                        <li key={shortUrl}>
-                            {lognUrl}
-                            <div>
-                                {shortUrl}
-                                <Button
-                                    onClick={() => handleCopyClick(shortUrl)}
-                                    isActive={isCopied}
-                                >
-                                    <span>{isCopied ? 'Copied!' : 'Copy'}</span>
-                                </Button>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            )}
-            <span>{tinyUrl}</span>
+            <ShortenSection onShorten={(url) => fetchData(url)} usersUrls={usersUrls} />
+
             <HeroSection
                 title={pageContent?.heroSection?.title}
                 text={pageContent?.heroSection?.text}
