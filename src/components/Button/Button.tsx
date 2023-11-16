@@ -7,12 +7,21 @@ interface Props {
     onClick?: () => void,
     className?: string,
     isLarge?: boolean,
-    isActive?: boolean
+    isActive?: boolean,
+    type?: "button" | "submit" | "reset"
 }
 
-export const Button = ({children, onClick, className = "", isLarge = false, isActive = false}: Props) => {
+export const Button = ({
+                           children,
+                           onClick,
+                           className = "",
+                           isLarge = false,
+                           isActive = false,
+                           type = "button"
+}: Props) => {
     return (
         <button
+            type={type}
             className={classNames(
                 className,
                 "button",
