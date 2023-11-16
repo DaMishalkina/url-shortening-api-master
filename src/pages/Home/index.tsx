@@ -60,14 +60,13 @@ export const Home = () => {
 
     return (
         <section>
-            <ShortenSection onShorten={(url) => fetchData(url)} usersUrls={usersUrls} />
-
             <HeroSection
                 title={pageContent?.heroSection?.title}
                 text={pageContent?.heroSection?.text}
                 image={pageContent?.heroSection?.image}
                 link={pageContent?.heroSection?.link}
             />
+            <ShortenSection onShorten={(url) => fetchData(url)} usersUrls={usersUrls} />
             <ContentBlockSection
                 title={pageContent?.statisticsSection?.title}
                 text={pageContent?.statisticsSection?.text}

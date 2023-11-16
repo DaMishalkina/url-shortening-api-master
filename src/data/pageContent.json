@@ -15,7 +15,8 @@
     "inputPlaceholder": "Shorten a link here...",
     "shortenButtonLabel": "Shorten it!",
     "copyButtonLabel": "Copy",
-    "copyButtonLabelSucceed": "Copied!"
+    "copyButtonLabelSucceed": "Copied!",
+    "errorMessage": "Please add link"
   },
   "statisticsSection": {
     "title": "Advanced Statistics",

@@ -6,10 +6,17 @@ import {useState} from "react";
 
 interface Props {
     longLink: string,
-    shortLink: string
+    shortLink: string,
+    copyButtonLabel?: string,
+    copyButtonLabelActive?: string
 }
 
-export const ShortenedLink = ({longLink, shortLink}: Props) => {
+export const ShortenedLink = ({
+                                  longLink,
+                                  shortLink,
+                                  copyButtonLabel = "Copy",
+                                  copyButtonLabelActive = "Copied!"
+}: Props) => {
     const [isCopied, setIsCopied] = useState(false);
     async function copyTextToClipboard(text: string) {
         if ("clipboard" in navigator) {
@@ -38,7 +45,9 @@ export const ShortenedLink = ({longLink, shortLink}: Props) => {
                     onClick={() => handleCopyClick(shortLink)}
                     isActive={isCopied}
                 >
-                    <span className="link-container____link-to-copy">{isCopied ? "Copied!" : "Copy"}</span>
+                    <span className="link-container____link-to-copy">
+                        {isCopied ? copyButtonLabelActive : copyButtonLabel}
+                    </span>
                 </Button>
             </div>
         </li>
