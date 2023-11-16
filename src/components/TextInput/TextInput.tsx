@@ -11,7 +11,8 @@ interface Props {
     type?: "email" | "password" | "text" | "search",
     label?: string,
     placeholder?: string,
-    error?: string,
+    isError?: boolean,
+    errorMessage?: string
     name?: string
 }
 
@@ -23,22 +24,25 @@ export const TextInput = ({
                               id = "",
                               placeholder = "",
                               label = "",
-                              error = ""  }: Props) => {
+                              isError = false,
+                              errorMessage = ""}: Props) => {
     const [keyValue, setKeyValue] = useState(defaultValue);
     useEffect(() => {
         setKeyValue(defaultValue);
     }, [defaultValue])
     return (
         <label className="text-input-container">
-            <span>
+            {label?.length > 0 && (
+                <span>
                {label}
             </span>
+            )}
             <input
                 name={name}
                 {...(id.length > 0 && {id: id})}
                 className={classNames(
                     "text-input-container__input",
-                    error?.length > 0
+                    isError
                         ? "text-input-container__input--error"
                         : ""
                 )}
@@ -50,11 +54,12 @@ export const TextInput = ({
                     onChange && onChange(event?.target?.value);
                 }}
             />
-            {error?.length > 0 &&
-                <span className="text-input-container__error-message">
-                    {error}
-                </span>
-            }
+            <span className={classNames(
+                "error-message text-input-container__error-message",
+                isError && "error-message--active"
+            )}>
+                {errorMessage}
+            </span>
         </label>
     )
 

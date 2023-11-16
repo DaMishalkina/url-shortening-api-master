@@ -1,1 +1,55 @@
 @import "src/styles/StyleVariables";
+
+
+.shorten-section__form-wrapper {
+  background: $dark-violet;
+  position: relative;
+  padding: 24px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.shorten-section__picture {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  border-radius: 8px;
+}
+.shorten-section__image {
+  width: 100%;
+}
+
+.shorten-form {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.shorten-form__button {
+  &:focus, &:active {
+    background: $cyan--hover;
+  }
+}
+
+@media (min-width: $screen--lg) {
+  .shorten-section__form-wrapper {
+    padding: 50px 52px 28px 52px;
+  }
+  .shorten-form {
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+  }
+  .shorten-form label {
+  }
+  .shorten-form__button {
+    width: auto;
+    align-self: flex-start;
+  }
+
+}

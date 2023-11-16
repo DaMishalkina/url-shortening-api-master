@@ -1,9 +1,37 @@
 @import "src/styles/StyleVariables";
 
 .shorten-section {
-
+  position: relative;
+}
+.shorten-section__background {
+  background: $section-background;
+  position: absolute;
+  top: 120px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .shorten-section__container {
+  position: relative;
+  z-index: 1;
+  padding: 44px 24px;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 24px;
+}
 
+@media (min-width: $screen--lg) {
+  .shorten-section__container {
+    padding: 35px 48px 60px 48px;
+    gap: 40px;
+  }
+  .shorten-section__background {
+    top: 84px;
+    bottom: 0;
+  }
 }

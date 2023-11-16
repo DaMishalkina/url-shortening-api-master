@@ -16,7 +16,8 @@
     "shortenButtonLabel": "Shorten it!",
     "copyButtonLabel": "Copy",
     "copyButtonLabelSucceed": "Copied!",
-    "errorMessage": "Please add link"
+    "errorMessage": "Please add link",
+    "image": "bg-shorten"
   },
   "statisticsSection": {
     "title": "Advanced Statistics",

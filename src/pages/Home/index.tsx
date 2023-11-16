@@ -16,7 +16,6 @@ const actionSectionBgImage = {
         desktop: `src/assets/${pageContent?.actionSection?.image}-desktop.svg`
     }
 }
-
 const API_KEY = import.meta.env.VITE_TINYURL_API_KEY;
 const API_URL = "https://api.tinyurl.com/create";
 
@@ -26,6 +25,7 @@ export const Home = () => {
         localStorage.getItem("users-urls") ?
         JSON.parse(localStorage.getItem("users-urls") || "") : null
     );
+    const [error, setError] = useState("");
     const fetchData = async (url: string) => {
         fetch(API_URL, {
             method: "POST",
@@ -51,8 +51,15 @@ export const Home = () => {
                     localStorage.setItem("users-urls", JSON.stringify(newUrls))
                     return newUrls;
                 })
+                resetError();
             })
-            .catch(error => console.error(error));
+            .catch(error => {
+                console.error(error);
+                setError(error);
+            });
+    }
+    const resetError = () => {
+        setError("");
     }
     useEffect(() => {
         localStorage.setItem("users-urls", JSON.stringify(usersUrls));
@@ -66,7 +73,12 @@ export const Home = () => {
                 image={pageContent?.heroSection?.image}
                 link={pageContent?.heroSection?.link}
             />
-            <ShortenSection onShorten={(url) => fetchData(url)} usersUrls={usersUrls} />
+            <ShortenSection
+                resetError={resetError}
+                isError={error.length > 0}
+                defaultErrorMessage={error}
+                onShorten={(url) => fetchData(url)} usersUrls={usersUrls}
+            />
             <ContentBlockSection
                 title={pageContent?.statisticsSection?.title}
                 text={pageContent?.statisticsSection?.text}

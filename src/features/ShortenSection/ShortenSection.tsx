@@ -6,18 +6,42 @@ import "./ShortenSection.scss";
 
 interface Props {
     onShorten: (url: string) => void,
-    usersUrls?: {[key: string]: string}
+    usersUrls?: {[key: string]: string},
+    isError?: boolean,
+    defaultErrorMessage?: string,
+    resetError?: () => void
 }
 
-export const ShortenSection = ({onShorten, usersUrls}: Props) => {
+const shortenSectionImage = {
+    alt: pageContent?.shortenFormSection?.image,
+    srcSet: {
+        mobile: `src/assets/${pageContent?.shortenFormSection?.image}-mobile.svg`,
+        desktop: `src/assets/${pageContent?.shortenFormSection?.image}-desktop.svg`
+    }
+}
+
+
+export const ShortenSection = ({
+                                   onShorten,
+                                   usersUrls,
+                                   isError = false,
+                                   defaultErrorMessage,
+                                   resetError}: Props) => {
     return (
         <section className="shorten-section">
+            <div className="shorten-section__background"></div>
             <div className="shorten-section__container">
                 <ShortenForm
+                    bgImage={shortenSectionImage}
                     inputPlaceholder={pageContent?.shortenFormSection?.inputPlaceholder}
                     formButtonLabel={pageContent?.shortenFormSection?.shortenButtonLabel}
-                    errorMessage={pageContent?.shortenFormSection?.errorMessage}
+                    isDefaultError={isError}
+                    errorMessage={
+                    defaultErrorMessage
+                        ? defaultErrorMessage
+                        : pageContent?.shortenFormSection?.errorMessage}
                     onSubmit={(url: string) => onShorten(url)}
+                    resetError={resetError}
                 />
                 {usersUrls && (
                     <ShortenedLinksList

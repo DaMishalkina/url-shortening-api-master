@@ -38,7 +38,7 @@ export const ActionSection = ({title, link, bgImage}: Props) => {
                     <img
                         className="action-section__image"
                         src={bgImage.srcSet.mobile}
-                        alt="Monitor with opened Email Window"
+                        alt="Violet background image"
                     />
                 </picture>
             )}
