@@ -6,14 +6,17 @@ import {HeroSection} from "../../components/HeroSection/HeroSection";
 import pageContent from "../../data/pageContent.json";
 import {ShortenSection} from "../../features/ShortenSection/ShortenSection";
 
+
+const IMAGES = import.meta.glob('@assets/*.{svg,png,jpg,jpeg,PNG,JPEG}', { eager: true, as: 'url' });
+
 const statisticsCards = pageContent?.statisticsSection?.cards.map(card => {
-    return {...card, image: {alt: card.image, src: `src/assets/${card.image}.svg`}};
+    return {...card, image: {alt: card.image, src: IMAGES[`/src/assets/${card.image}.svg`]}};
 })
 const actionSectionBgImage = {
     alt: pageContent?.actionSection?.image,
     srcSet: {
-        mobile: `src/assets/${pageContent?.actionSection?.image}-mobile.svg`,
-        desktop: `src/assets/${pageContent?.actionSection?.image}-desktop.svg`
+        mobile: IMAGES[`/src/assets/${pageContent?.actionSection?.image}-mobile.svg`],
+        desktop: IMAGES[`/src/assets/${pageContent?.actionSection?.image}-desktop.svg`]
     }
 }
 const API_KEY = import.meta.env.VITE_TINYURL_API_KEY;

@@ -13,11 +13,13 @@ interface Props {
     handleItemRemove?: (link: string) => void
 }
 
+const IMAGES = import.meta.glob('@assets/*.{svg,png,jpg,jpeg,PNG,JPEG}', { eager: true, as: 'url' });
+
 const shortenSectionImage = {
     alt: pageContent?.shortenFormSection?.image,
     srcSet: {
-        mobile: `src/assets/${pageContent?.shortenFormSection?.image}-mobile.svg`,
-        desktop: `src/assets/${pageContent?.shortenFormSection?.image}-desktop.svg`
+        mobile: IMAGES[`/src/assets/${pageContent?.shortenFormSection?.image}-mobile.svg`],
+        desktop: IMAGES[`/src/assets/${pageContent?.shortenFormSection?.image}-desktop.svg`]
     }
 }
 

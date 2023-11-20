@@ -10,6 +10,9 @@ export default ({ mode }) => {
       define: {
           "process.env.NODE_ENV": `"${mode}"`,
       },
+      base: process.env.NODE_ENV === "production" ?
+          "/url-shortening-api-master/"
+          : "",
       resolve: {
           alias: {
               "@assets": path.resolve(__dirname, "src/assets"),

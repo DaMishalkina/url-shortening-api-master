@@ -18,7 +18,7 @@ interface Props {
         name: string
     }
 }
-
+const IMAGES = import.meta.glob('@assets/*.{svg,png,jpg,jpeg,PNG,JPEG}', { eager: true, as: 'url' });
 const isDesktopImageRight = (position = "right") => {
     return position === "right";
 }
@@ -30,7 +30,7 @@ export const HeroSection = ({title, text, link, image}: Props) => {
                 <div className="hero-section__image-container">
                     <img
                         className="hero-section__image"
-                        src={`src/assets/${image.name}.svg`}
+                        src={IMAGES[`/src/assets/${image.name}.svg`]}
                         alt={image.name}
                     />
                 </div>

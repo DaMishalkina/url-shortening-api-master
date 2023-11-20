@@ -8,8 +8,6 @@ import {useOutsideClick} from "../../hooks/useOutsideClick";
 
 import {NavType} from "../Navigation/types/types";
 
-// import Logo from "../../assets/logo.svg?react";
-
 import "./Header.scss";
 import {CustomLink} from "../CustomLink/CustomLink";
 import {Button} from "../Button/Button";
