@@ -9,7 +9,8 @@ interface Props {
     usersUrls?: {[key: string]: string},
     isError?: boolean,
     defaultErrorMessage?: string,
-    resetError?: () => void
+    resetError?: () => void,
+    handleItemRemove?: (link: string) => void
 }
 
 const shortenSectionImage = {
@@ -26,7 +27,8 @@ export const ShortenSection = ({
                                    usersUrls,
                                    isError = false,
                                    defaultErrorMessage,
-                                   resetError}: Props) => {
+                                   resetError,
+                                   handleItemRemove}: Props) => {
     return (
         <section className="shorten-section">
             <div className="shorten-section__background"></div>
@@ -45,6 +47,7 @@ export const ShortenSection = ({
                 />
                 {usersUrls && (
                     <ShortenedLinksList
+                        handleItemRemove={handleItemRemove}
                         copyButtonLabel={pageContent?.shortenFormSection?.copyButtonLabel}
                         copyButtonLabelActive={pageContent?.shortenFormSection?.copyButtonLabelSucceed}
                         usersLinks={usersUrls}

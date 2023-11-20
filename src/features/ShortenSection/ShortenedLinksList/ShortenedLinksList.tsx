@@ -7,19 +7,22 @@ interface Props {
         [key: string]: string
     },
     copyButtonLabel?: string,
-    copyButtonLabelActive?: string
+    copyButtonLabelActive?: string,
+    handleItemRemove?: (link: string) => void
 }
 
 
 export const ShortenedLinksList = ({
                                        usersLinks,
                                        copyButtonLabel = "",
-                                       copyButtonLabelActive = ""
+                                       copyButtonLabelActive = "",
+                                       handleItemRemove
 }: Props) => {
     return (
         <ul className="links-list">
             {Object.entries(usersLinks).map(([longLink, shortLink]) => (
                 <ShortenedLink
+                    handleItemSwipe={handleItemRemove}
                     copyButtonLabel={copyButtonLabel}
                     copyButtonLabelActive={copyButtonLabelActive}
                     key={longLink}

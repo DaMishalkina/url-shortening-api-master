@@ -1,0 +1,36 @@
+@import "src/styles/StyleVariables";
+
+
+
+.item-to-swipe__background-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  //padding-right: 16px;
+  color: #fff;
+  background-color: $red;
+  box-sizing: border-box;
+  padding-right: 30px;
+}
+
+.item-to-swipe {
+  position: relative;
+  transition: max-height 0.5s ease;
+  max-height: 100%;
+  transform-origin: top;
+  overflow: hidden;
+  width: 100%;
+  cursor: pointer;
+  font-size: 18px;
+}
+.item-to-swipe__bouncing-item {
+  transition: transform 0.5s ease-out;
+  width: 100%;
+  box-sizing: border-box;
+  height: 100%;
+}

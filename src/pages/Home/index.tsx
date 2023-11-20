@@ -58,6 +58,12 @@ export const Home = () => {
                 setError(error);
             });
     }
+    const removeLink = (longLink: string) => {
+        setUsersUrl((prevState) => {
+            return  Object.fromEntries(Object.entries(prevState).filter(([usersLongLink]) => usersLongLink !== longLink));
+
+        })
+    }
     const resetError = () => {
         setError("");
     }
@@ -74,6 +80,7 @@ export const Home = () => {
                 link={pageContent?.heroSection?.link}
             />
             <ShortenSection
+                handleItemRemove={removeLink}
                 resetError={resetError}
                 isError={error.length > 0}
                 defaultErrorMessage={error}
