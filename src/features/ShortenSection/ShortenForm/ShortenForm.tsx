@@ -59,8 +59,12 @@ export const ShortenForm = ({
                </picture>
            )}
            <form
+
                className="shorten-form shorten-section__form-container"
-               onSubmit={handleSubmit}
+               onSubmit={(event) => {
+                   event.preventDefault();
+                    handleSubmit()
+               }}
            >
                <TextInput
                    placeholder={inputPlaceholder}

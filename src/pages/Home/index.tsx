@@ -28,9 +28,10 @@ export const Home = () => {
         localStorage.getItem("users-urls") ?
         JSON.parse(localStorage.getItem("users-urls") || "") : null
     );
+
     const [error, setError] = useState("");
     const fetchData = async (url: string) => {
-        fetch(API_URL, {
+        await fetch(API_URL, {
             method: "POST",
             headers: {
                 accept: `application/json`,
@@ -87,7 +88,8 @@ export const Home = () => {
                 resetError={resetError}
                 isError={error.length > 0}
                 defaultErrorMessage={error}
-                onShorten={(url) => fetchData(url)} usersUrls={usersUrls}
+                onShorten={(url) => fetchData(url)}
+                usersUrls={usersUrls}
             />
             <ContentBlockSection
                 title={pageContent?.statisticsSection?.title}
