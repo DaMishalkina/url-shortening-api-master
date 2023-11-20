@@ -1,0 +1,27 @@
+@import "src/styles/StyleVariables";
+
+.main-container {
+  padding: 44px 24px 80px 24px;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main-container__title {
+  font-size: 32px;
+  color: $very-dark-blue;
+  text-transform: capitalize;
+}
+
+@media (min-width: $screen--lg) {
+  .main-container {
+    padding: 60px 48px 120px 48px;
+  }
+
+  .main-container__title {
+    font-size: 58px;
+  }
+}

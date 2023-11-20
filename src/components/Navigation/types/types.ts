@@ -7,7 +7,7 @@ export interface RouteItem {
     key: string;
     title: string;
     tooltip?: string;
-    path: string;
+    path: string | string[];
     component?: FunctionComponent;
     enabled: boolean;
     icon?: ComponentType;

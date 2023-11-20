@@ -44,7 +44,7 @@ export const Footer = ({navigationMenu, socialMedias, logo}: Props) => {
                                         <Link
                                             className="footer-nav-item__link"
                                             key={link}
-                                            to={replaceSpaceWithUnderline(link)}
+                                            to={`${replaceSpaceWithUnderline(navLinksTitle)}/${replaceSpaceWithUnderline(link)}`}
                                         >
                                             {link}
                                         </Link>

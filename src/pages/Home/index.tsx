@@ -32,7 +32,7 @@ export const Home = () => {
             headers: {
                 accept: `application/json`,
                 authorization: `Bearer ${API_KEY}`,
-                'content-type': `application/json`
+                "content-type": `application/json`
             },
             body: JSON.stringify({
                 url: url,

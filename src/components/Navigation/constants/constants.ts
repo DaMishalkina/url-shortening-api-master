@@ -1,20 +1,31 @@
-import {Features} from "../../../pages/Features";
+import {AnyPage} from "../../../pages/AnyPage";
 import {Home} from "../../../pages/Home";
+
 
 import {RouteItem} from "../types/types";
 
 /*PAGES TITLE*/
-export const PAGE_TITLE_FEATURES = "Features";
+export const PAGE_TITLE_ANY_PAGE = "Any page";
 export const PAGE_TITLE_HOME = "Home";
 
 export const ROUTES: Array<RouteItem> = [
     {
-        key: "router-features",
-        title: PAGE_TITLE_FEATURES,
-        tooltip: PAGE_TITLE_FEATURES,
-        path: "/features",
+        key: "router-any-page",
+        title: PAGE_TITLE_ANY_PAGE,
+        tooltip: PAGE_TITLE_ANY_PAGE,
+        path: "/:id",
         enabled: true,
-        component: Features,
+        component: AnyPage,
+        appendDivider: true,
+        type: "guest"
+    },
+    {
+        key: "router-any-page",
+        title: PAGE_TITLE_ANY_PAGE,
+        tooltip: PAGE_TITLE_ANY_PAGE,
+        path: "/:id/:id",
+        enabled: true,
+        component: AnyPage,
         appendDivider: true,
         type: "guest"
     },
